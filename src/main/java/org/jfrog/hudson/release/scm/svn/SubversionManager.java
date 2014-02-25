@@ -163,7 +163,7 @@ public class SubversionManager extends AbstractScmManager<SubversionSCM> {
     }
 
     private ISVNAuthenticationProvider getSvnAuthenticationProvider() {
-        ISVNAuthenticationProvider sap = getJenkinsScm().getDescriptor().createAuthenticationProvider();
+        ISVNAuthenticationProvider sap = getJenkinsScm().createAuthenticationProvider(build.getProject(),getLocation());
         if (sap == null) {
             throw new AbortException("Subversion authentication info is not set.");
         }
